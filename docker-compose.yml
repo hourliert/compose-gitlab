@@ -10,7 +10,7 @@ services:
       - redis:/var/lib/redis
 
   postgresql:
-    image: sameersbn/postgresql:9.4-22
+    image: sameersbn/postgresql:9.6-2
     container_name: gitlab-postgresql
     restart: always
     networks:
@@ -24,7 +24,7 @@ services:
       - DB_EXTENSION=pg_trgm
 
   gitlab:
-    image: sameersbn/gitlab:8.9.5
+    image: sameersbn/gitlab:8.16.5
     container_name: gitlab
     restart: always
     networks:
