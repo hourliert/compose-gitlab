@@ -10,7 +10,7 @@ services:
       - redis:/var/lib/redis
 
   postgresql:
-    image: sameersbn/postgresql:9.4-22
+    image: sameersbn/postgresql:9.6-2
     container_name: gitlab-postgresql
     restart: always
     networks:
@@ -24,7 +24,7 @@ services:
       - DB_EXTENSION=pg_trgm
 
   gitlab:
-    image: sameersbn/gitlab:8.9.5
+    image: sameersbn/gitlab:8.16.5
     container_name: gitlab
     restart: always
     networks:
@@ -49,6 +49,10 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
       - DB_NAME=${DB_NAME}
+      
+      - GITLAB_SECRETS_OTP_KEY_BASE=${GITLAB_SECRETS_OTP_KEY_BASE}
+      - GITLAB_SECRETS_DB_KEY_BASE=${GITLAB_SECRETS_DB_KEY_BASE}
+      - GITLAB_SECRETS_SECRET_KEY_BASE=${GITLAB_SECRETS_SECRET_KEY_BASE}
 
       - REDIS_HOST=redis
       - REDIS_PORT=6379
